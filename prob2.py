@@ -1,40 +1,27 @@
-N = int(input("no. of students:"))
-
-b = []
-for i in range(N):
-    name = input("name:")
-    score = float(input("score:"))
-    a = [name, score]
-    b.append(a)
-
-b.sort(key = lambda v : v[1])
+n = int(input("no. of students"))
 
 
-c = []
-print(b)
-for x in range(1, len(b)-1):
-    if b[0][1] == b[x][1]:
+nested = []
+names = []
+scores = []
+for i in range(n):
+    nm = input("name")
+    names.append(nm)
+    sc = float(input("score"))
+    scores.append(sc)
+    nested.append([nm, sc])
 
-        if b[x+1][1] == b[x+2][1]:
-            c.append(b[x+2][0])
-            c.sort()
+st = list(set(scores))
+st.sort()
 
+mnsc = st[1]
 
-        elif b[x+1][1] != b[x+2][1]:
-            c.append(b[x+1][0])
+final = []
 
+for i in range(n):
+    if nested[i][1] == mnsc:
+        final.append(nested[i][0])
 
-    elif b[0][1] != b[x][1]:
-
-        if b[1][1] == b[x][1]:
-            c.append(b[x][0])
-            c.sort()
-
-
-
-        elif b[1][1] != b[2][1]:
-            c.append(b[1][0])
-
-print(c)
-for i in c:
+final.sort()
+for i in final:
     print(i)
